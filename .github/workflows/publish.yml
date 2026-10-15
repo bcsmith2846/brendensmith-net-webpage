@@ -1,0 +1,21 @@
+name: Publish Static HTML File
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-slim
+    steps:
+      # Step 1: Clones your repository code onto the runner
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: SSH into server
+        uses: google-github-actions/ssh-compute@1.1.1
+        with:
+          instance_name: free
+          zone: us-central1-a
+          user: www-data
+          ssh_private_key: ${{ secrets.SSH_KEY }}
+          command: cp -f index.html
