@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f14">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Brenden Smith — software engineering, systems architecture, and technology leadership. Areas of interest include infrastructure, security, distributed systems, and technical strategy.">
+  <title>Brenden Smith</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #0b0f14;
+      --surface: #121922;
+      --text: #f3f6fa;
+      --text-secondary: #c4cfda;
+      --text-muted: #8997a8;
+      --text-subtle: #728196;
+      --line: #26313e;
+      --accent: #64d9b0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      background:
+        radial-gradient(ellipse 50% 35% at 90% 0%, rgba(100, 217, 176, 0.045), transparent 75%),
+        var(--background);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: min(680px, calc(100% - 48px));
+      min-height: 100vh;
+      min-height: 100svh;
+      margin-inline: auto;
+      padding-block: 48px;
+    }
+
+    .eyebrow, .section-label, .footer {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1rem;
+      letter-spacing: 0.095em;
+    }
+
+    .topbar, .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .topbar { color: var(--text-muted); }
+
+    .site-name { text-transform: uppercase; }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero { padding-block: clamp(56px, 10vh, 96px) 46px; }
+
+    .accent-rule {
+      width: 36px;
+      height: 2px;
+      margin-bottom: 20px;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.65rem, 7vw, 4.2rem);
+      font-weight: 650;
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+    }
+
+    .role {
+      margin: 14px 0 10px;
+      color: var(--text-secondary);
+      font-size: clamp(1rem, 2vw, 1.13rem);
+      font-weight: 500;
+    }
+
+    .role-divider {
+      color: var(--accent);
+      padding-inline: 0.15em;
+    }
+
+    .tagline {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .section {
+      padding-block: 26px 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      margin: 0 0 17px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      max-width: 62ch;
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .interests {
+      display: grid;
+      font-size: 2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 24px;
+      row-gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .interests li {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+    }
+
+    .interests li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      flex: 0 0 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .connect-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px 16px;
+      border: 1px solid #344353;
+      border-radius: 7px;
+      background: rgba(18, 25, 34, 0.6);
+      text-decoration: none;
+      transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .connect-link:hover {
+      border-color: var(--accent);
+      background: #18242d;
+      transform: translateY(-1px);
+    }
+
+    .connect-label { display: inline-flex; align-items: center; gap: 12px; font-weight: 600; }
+
+    .connect-link svg { width: 19px; height: 19px; flex-shrink: 0; color: var(--accent); }
+
+    .footer {
+      padding-top: 29px;
+      border-top: 1px solid var(--line);
+      color: var(--text-subtle);
+    }
+
+    @media (max-width: 520px) {
+      .page { width: min(100% - 40px, 680px); padding-block: 30px; }
+      .topbar { align-items: flex-start; }
+      .status { font-size: 0.62rem; }
+      .hero { padding-block: 65px 40px; }
+      .interests { grid-template-columns: 1fr; }
+      .footer { align-items: flex-start; flex-direction: column; gap: 6px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .connect-link { transition: none; }
+      .connect-link:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <span class="eyebrow site-name">brendensmith.net</span>
+      <span class="eyebrow status"><span class="status-dot" aria-hidden="true"></span>Static by design</span>
+    </header>
+
+    <div class="hero">
+      <div class="accent-rule" aria-hidden="true"></div>
+      <h1>Brenden Smith</h1>
+      <p class="role">Software Engineering <span class="role-divider" aria-hidden="true">·</span> Systems Architecture <span class="role-divider" aria-hidden="true">·</span> Technology Leadership</p>
+      <p class="tagline">Software doesn't stop at the application layer.</p>
+    </div>
+
+    <section class="section" aria-labelledby="profile-title">
+      <h2 class="section-label" id="profile-title">01 / Profile</h2>
+      <p class="section-copy">Hands-on engineering across software, networks, and infrastructure, spanning protocol debugging, systems development, and architecture, with broader responsibility for technical strategy, engineering operations, and organizational direction.</p>
+    </section>
+
+    <section class="section" aria-labelledby="interests-title">
+      <h2 class="section-label" id="interests-title">02 / Professional Areas of Interest</h2>
+      <ul class="interests">
+        <li>Systems Engineering</li>
+        <li>Programming Languages</li>
+        <li>Network Architecture</li>
+        <li>Developer Tooling</li>
+        <li>Security Engineering</li>
+        <li>Distributed Systems</li>
+        <li>Technical Strategy</li>
+        <li>Engineering Leadership</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="connect-title">
+      <h2 class="section-label" id="connect-title">03 / Connect</h2>
+      <p class="section-copy">Professional background, career history, and contact information are available on LinkedIn.</p>
+      <a class="connect-link" href="https://www.linkedin.com/in/brenden-c-smith" target="_blank" rel="me noopener noreferrer" aria-label="Brenden Smith on LinkedIn (opens in a new tab)">
+        <span class="connect-label">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.6 0 4.265 2.37 4.265 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"/>
+          </svg>
+          LinkedIn
+        </span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M7 17 17 7M8 7h9v9"/>
+        </svg>
+      </a>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 Brenden Smith</span>
+      <span>Southeast Texas · USA</span>
+    </footer>
+  </main>
+</body>
+</html>
